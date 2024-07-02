@@ -60,6 +60,16 @@ class Purchase < ApplicationRecord
 
   validates :amount_spent_in_cents, numericality: { greater_than: 0 }
   validate :total_equal_to_all_categories
+  validates :amount_spent, comparison:
+  { greater_than_or_equal_to: 0, message: "must be greater than or equal to 0" }
+  validates :amount_spent_on_diapers, comparison:
+  { greater_than_or_equal_to: 0, message: "must be greater than or equal to 0" }
+  validates :amount_spent_on_adult_incontinence, comparison:
+  { greater_than_or_equal_to: 0, message: "must be greater than or equal to 0" }
+  validates :amount_spent_on_period_supplies, comparison:
+  { greater_than_or_equal_to: 0, message: "must be greater than or equal to 0" }
+  validates :amount_spent_on_other, comparison:
+  { greater_than_or_equal_to: 0, message: "must be greater than or equal to 0" }
 
   def storage_view
     storage_location.nil? ? "N/A" : storage_location.name
